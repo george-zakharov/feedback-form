@@ -27,7 +27,7 @@ class DbConnector {
      * Name of the DB.
      * @var string
      */
-    private $db_name = 'tree-structure';
+    private $db_name = 'feedback';
 
     /**
      * Login for user of the DB.
