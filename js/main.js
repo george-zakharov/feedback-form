@@ -8,6 +8,12 @@ $(document).ready(function () {
     });
 });
 
+
+
+
+
+
+
 $(document).ready(function () {
     // при отправке формы contactForm на сервер (id="feedbackForm")
     $('#feedbackForm').submit(function(event) {
@@ -67,7 +73,7 @@ $(document).ready(function () {
                 //метод передачи запроса - POST
                 type: "POST",
                 //URL-адрес запроса
-                url: "../core/FormHandler.php",
+                url: "/core/FormHandler.php",
                 //передаваемые данные - formData
                 data: formData,
                 // не устанавливать тип контента, т.к. используется FormData

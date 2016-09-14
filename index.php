@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label for="inputName" class="col-sm-2 control-label">Имя*</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputName" name="inputName" required placeholder="Фамилия Имя Отчество">
+                            <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Фамилия Имя Отчество">
                             <span class="glyphicon form-control-feedback"></span>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label for="inputNumber" class="col-sm-2 control-label">Номер*</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputNumber" name="inputNumber" required placeholder="(___)___-__-__">
+                            <input type="text" class="form-control" id="inputNumber" name="inputNumber" placeholder="(___)___-__-__">
                             <span class="glyphicon form-control-feedback"></span>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- Masked Input JQuery plugin -->
     <script src="js/maskedinput.js"></script>
-    <!-- JQuery validation plugin TODO: Delete if no use -->
+    <!-- JQuery validation plugin -->
     <script src="js/jquery.validate.min.js"></script>
     <!-- Custom JS -->
     <script src="js/main.js"></script>
