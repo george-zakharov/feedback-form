@@ -23,7 +23,7 @@ $(document).ready(function() {
     $("#feedbackForm").submit(function() {
         $.ajax({
             type: "POST",
-            url: "core/FormHandler.php",
+            url: "Core/FormHandler.php",
             data: $(this).serialize()
         }).done(function() {
             $(this).find("input").val("");
