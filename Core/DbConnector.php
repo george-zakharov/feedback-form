@@ -1,8 +1,4 @@
 <?php
-namespace Core;
-
-use PDO;
-
 /**
  * Class DbConnector.
  * Establish connection to DB with use of singleton pattern.

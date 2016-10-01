@@ -1,8 +1,5 @@
 <?php
-namespace Core;
-
-use Core\DbConnector;
-use PDO;
+require 'DbConnector.php';
 
 /**
  * Class Model.
@@ -25,7 +22,7 @@ class Model
      */
     public static function setFeedback($name, $number, $email, $note, $client)
     {
-        $stmt = namespace\DbConnector::getInstance()->getConnection()->prepare(
+        $stmt = DbConnector::getInstance()->getConnection()->prepare(
             'INSERT INTO `messages`
              SET `name` = :name,
              `telephone` = :number,

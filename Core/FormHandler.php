@@ -1,7 +1,5 @@
 <?php
-namespace Core;
-
-use Core\Model;
+require 'Model.php';
 
 /**
  * Form handler controller.
@@ -55,7 +53,7 @@ class FormHandler {
      * At the end it calls setDataToDb() method.
      * @see setDataToDb
      */
-    private function __construct() {
+    public function __construct() {
         if ($_POST['inputName']
             && $_POST['inputNumber']
             && $_POST['inputEmail']
@@ -76,8 +74,10 @@ class FormHandler {
      * Call model to set data to DB.
      */
     private function setDataToDb() {
-        if ($this->gotData == true) {
-            namespace\Model::setFeedback($this->name, $this->number, $this->email, $this->note, $this->isClient);
+        if ($this->gotData === true) {
+            Model::setFeedback($this->name, $this->number, $this->email, $this->note, $this->isClient);
         }
     }
 }
+
+$formHandler = new FormHandler();
