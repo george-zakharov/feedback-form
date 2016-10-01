@@ -27,7 +27,7 @@ $(document).ready(function() {
             data: $(this).serialize()
         }).done(function() {
             $(this).find("input").val("");
-            //alert("Спасибо за заявку! Скоро мы с вами свяжемся.");
+            alert("Thank you for your request. We will contact you soon.");
             $("#feedbackForm").trigger("reset");
             //window.location.replace("FormHandler.php");
             //location.reload();
