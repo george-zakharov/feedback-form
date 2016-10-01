@@ -4,39 +4,13 @@ require 'DbConnector.php';
 /**
  * Class Model.
  * Perform the operations with DB.
+ *
+ * @package: feedback
+ * @version: 1.0
+ * @author: wildwind | George Zakharov <george_zakharov@mail.ru>
  */
 class Model
 {
-    /**
-     * Get nodes from DB.
-     * For default the $id is set to null and method returns all nodes (all root nodes too).
-     * If the $id of the node is provided, method returns this node and all nested nodes.
-     * @param int $id
-     * @return array
-     * @throws Exception
-     */
-    public static function getNodes($id = null)
-    {
-        if ($id === null) {
-            $stmt = DbConnector::getInstance()->getConnection()->prepare(
-                'SELECT name, level 
-                 FROM nodes 
-                 ORDER BY left_key'
-            );
-        } elseif ($id > 0) {
-            $stmt = DbConnector::getInstance()->getConnection()->prepare(
-                'SELECT name, level 
-                 FROM nodes 
-                 WHERE left_key >= (SELECT left_key FROM nodes WHERE id = ?) 
-                 AND right_key <= (SELECT right_key FROM nodes WHERE id = ?) ORDER BY left_key'
-            );
-        } else {
-            throw new Exception('id of the node is not correct');
-        }
-        $stmt->execute(array($id, $id));
-        return $stmt->fetchAll();
-    }
-
     /**
      * Set new node to the tree.
      * If $parent_name is `null` and $new_node_name is provided, a new root node sets.
@@ -84,45 +58,6 @@ class Model
         $stmt->bindParam(':level', $level, PDO::PARAM_INT);
         $stmt->bindParam(':right_key', $right_key, PDO::PARAM_INT);
         $stmt->bindParam(':name', $new_node_name, PDO::PARAM_STR);
-        $stmt->execute();
-    }
-
-    /**
-     * Delete node from tree.
-     * By default $id is `null` and the whole tree can be deleted.
-     * @param null $id
-     * @throws Exception
-     */
-    public static function deleteNode($id = null)
-    {
-        if ($id === null) {
-            $stmt = DbConnector::getInstance()->getConnection()->prepare(
-                'DELETE
-                 FROM nodes'
-            );
-        } elseif ($id > 0) {
-            $stmt = DbConnector::getInstance()->getConnection()->prepare(
-                'SELECT left_key, right_key FROM nodes WHERE id = ?'
-            );
-            $stmt->execute(array($id));
-            $position = $stmt->fetchAll();
-            $left_key = $position[0]['left_key'];
-            $right_key = $position[0]['right_key'];
-
-            $stmt = DbConnector::getInstance()->getConnection()->prepare(
-                'DELETE FROM nodes 
-                 WHERE left_key >= :left_key 
-                 AND right_key <= :right_key;
-                 UPDATE nodes 
-                 SET left_key = IF(left_key > :left_key, left_key - (:right_key - :left_key + 1), left_key), 
-                 right_key = right_key - (:right_key - :left_key + 1) 
-                 WHERE right_key > :right_key'
-            );
-        } else {
-            throw new Exception('id of the node is not correct');
-        }
-        $stmt->bindParam(':left_key', $left_key, PDO::PARAM_INT);
-        $stmt->bindParam(':right_key', $right_key, PDO::PARAM_INT);
         $stmt->execute();
     }
 }

@@ -2,6 +2,10 @@
 /**
  * Class DbConnector.
  * Establish connection to DB with use of singleton pattern.
+ *
+ * @package: feedback
+ * @version: 1.0
+ * @author: @author: wildwind | George Zakharov <george_zakharov@mail.ru>
  */
 class DbConnector {
 

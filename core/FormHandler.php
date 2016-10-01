@@ -4,7 +4,7 @@
  *
  * @package: feedback
  * @version: 1.0
- * @author: wildwind | George Zakharov
+ * @author: @author: wildwind | George Zakharov <george_zakharov@mail.ru>
  */
 
 $name = $_POST['inputName'];

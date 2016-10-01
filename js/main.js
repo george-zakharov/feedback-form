@@ -1,4 +1,12 @@
 /**
+ * This file stores JQuery functions of the project.
+ *
+ * @package: feedback
+ * @version: 1.0
+ * @author: @author: wildwind | George Zakharov <george_zakharov@mail.ru>
+*/
+
+/**
  * This function helps to create mask on input field for telephone number.
  * Plugin: maskedinput.js
  */
