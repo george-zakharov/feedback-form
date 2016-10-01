@@ -1,0 +1,16 @@
+/*
+This is main stylesheet.
+
+@package: feedback
+@version: 1.0
+@author: wildwind | George Zakharov
+*/
+
+/*
+Common style
+*/
+#error {
+    color: #ff0000;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
